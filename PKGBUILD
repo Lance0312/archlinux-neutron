@@ -112,8 +112,8 @@ package_python2-neutron() {
   conflics=('python2-quantum')
   cd tmp
 
-  install -d ${pkgdir}/usr/lib/
-  cp -R usr/lib/ ${pkgdir}/usr/
+  install -d "${pkgdir}/usr/lib/"
+  cp -R usr/lib/ "${pkgdir}/usr/"
 }
 
 package_neutron-common() {
@@ -126,30 +126,30 @@ package_neutron-common() {
 
   cd tmp
 
-  install -d ${pkgdir}/etc/neutron/rootwrap.d/
-  install -m 640 etc/neutron/api-paste.ini ${pkgdir}/etc/neutron/
-  install -m 640 etc/neutron/policy.json ${pkgdir}/etc/neutron/
-  install -m 640 etc/neutron/neutron.conf ${pkgdir}/etc/neutron/
-  install -m 644 etc/neutron/rootwrap.conf ${pkgdir}/etc/neutron/
-  install -m 644 etc/neutron/rootwrap.d/iptables-firewall.filters ${pkgdir}/etc/neutron/rootwrap.d/
+  install -d "${pkgdir}/etc/neutron/rootwrap.d/"
+  install -m 640 etc/neutron/api-paste.ini "${pkgdir}/etc/neutron/"
+  install -m 640 etc/neutron/policy.json "${pkgdir}/etc/neutron/"
+  install -m 640 etc/neutron/neutron.conf "${pkgdir}/etc/neutron/"
+  install -m 644 etc/neutron/rootwrap.conf "${pkgdir}/etc/neutron/"
+  install -m 644 etc/neutron/rootwrap.d/iptables-firewall.filters "${pkgdir}/etc/neutron/rootwrap.d/"
   
-  install -d ${pkgdir}/usr/bin/
-  install -m 755 usr/bin/neutron-db-manage ${pkgdir}/usr/bin/
-  install -m 755 usr/bin/neutron-debug ${pkgdir}/usr/bin/
-  install -m 755 usr/bin/neutron-netns-cleanup ${pkgdir}/usr/bin/
-  install -m 755 usr/bin/neutron-ovs-cleanup ${pkgdir}/usr/bin/
-  install -m 755 usr/bin/neutron-rootwrap ${pkgdir}/usr/bin/
-  install -m 755 usr/bin/neutron-rootwrap-xen-dom0 ${pkgdir}/usr/bin/
-  install -m 755 usr/bin/neutron-usage-audit ${pkgdir}/usr/bin/
+  install -d "${pkgdir}/usr/bin/"
+  install -m 755 usr/bin/neutron-db-manage "${pkgdir}/usr/bin/"
+  install -m 755 usr/bin/neutron-debug "${pkgdir}/usr/bin/"
+  install -m 755 usr/bin/neutron-netns-cleanup "${pkgdir}/usr/bin/"
+  install -m 755 usr/bin/neutron-ovs-cleanup "${pkgdir}/usr/bin/"
+  install -m 755 usr/bin/neutron-rootwrap "${pkgdir}/usr/bin/"
+  install -m 755 usr/bin/neutron-rootwrap-xen-dom0 "${pkgdir}/usr/bin/"
+  install -m 755 usr/bin/neutron-usage-audit "${pkgdir}/usr/bin/"
 
-  install -d ${pkgdir}/usr/share/man/man1/
-  cp -R man/* ${pkgdir}/usr/share/man/man1/
+  install -d "${pkgdir}/usr/share/man/man1/"
+  cp -R man/* "${pkgdir}/usr/share/man/man1/"
 
-  install -d -m 0750 ${pkgdir}/etc/sudoers.d/
-  install -m 440 ${srcdir}/neutron_sudoers ${pkgdir}/etc/sudoers.d/
+  install -d -m 0750 "${pkgdir}/etc/sudoers.d/"
+  install -m 440 "${srcdir}/neutron_sudoers" "${pkgdir}/etc/sudoers.d/"
 
-  install -d -m 0770 ${pkgdir}/var/lib/neutron/
-  install -d -m 0770 ${pkgdir}/var/log/neutron/
+  install -d -m 0770 "${pkgdir}/var/lib/neutron/"
+  install -d -m 0770 "${pkgdir}/var/log/neutron/"
 }
 
 package_neutron-dhcp-agent() {
@@ -160,15 +160,15 @@ package_neutron-dhcp-agent() {
 
   cd tmp
 
-  install -d ${pkgdir}/etc/neutron/rootwrap.d/
-  install -m 640 etc/neutron/dhcp_agent.ini ${pkgdir}/etc/neutron/
-  install -m 644 etc/neutron/rootwrap.d/dhcp.filters ${pkgdir}/etc/neutron/rootwrap.d/
+  install -d "${pkgdir}/etc/neutron/rootwrap.d/"
+  install -m 640 etc/neutron/dhcp_agent.ini "${pkgdir}/etc/neutron/"
+  install -m 644 etc/neutron/rootwrap.d/dhcp.filters "${pkgdir}/etc/neutron/rootwrap.d/"
 
-  install -d ${pkgdir}/usr/bin/
-  install -m 755 usr/bin/neutron-dhcp-agent ${pkgdir}/usr/bin/
+  install -d "${pkgdir}/usr/bin/"
+  install -m 755 usr/bin/neutron-dhcp-agent "${pkgdir}/usr/bin/"
 
-  install -D -m 644 ${srcdir}/neutron-dhcp-agent.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-dhcp-agent.service
+  install -D -m 644 "${srcdir}/neutron-dhcp-agent.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-dhcp-agent.service"
 }
 
 package_neutron-l3-agent() {
@@ -179,14 +179,14 @@ package_neutron-l3-agent() {
 
   cd tmp
 
-  install -d ${pkgdir}/etc/neutron/rootwrap.d/
-  install -m 640 etc/neutron/l3_agent.ini ${pkgdir}/etc/neutron/
-  install -m 644 etc/neutron/rootwrap.d/l3.filters ${pkgdir}/etc/neutron/rootwrap.d/
+  install -d "${pkgdir}/etc/neutron/rootwrap.d/"
+  install -m 640 etc/neutron/l3_agent.ini "${pkgdir}/etc/neutron/"
+  install -m 644 etc/neutron/rootwrap.d/l3.filters "${pkgdir}/etc/neutron/rootwrap.d/"
 
-  install -D -m 755 usr/bin/neutron-l3-agent ${pkgdir}/usr/bin/neutron-l3-agent
+  install -D -m 755 usr/bin/neutron-l3-agent "${pkgdir}/usr/bin/neutron-l3-agent"
 
-  install -D -m 644 ${srcdir}/neutron-l3-agent.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-l3-agent.service
+  install -D -m 644 "${srcdir}/neutron-l3-agent.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-l3-agent.service"
 }
 
 package_neutron-lbaas-agent() {
@@ -197,14 +197,14 @@ package_neutron-lbaas-agent() {
 
   cd tmp
 
-  install -d ${pkgdir}/etc/neutron/rootwrap.d/
-  install -m 640 etc/neutron/lbaas_agent.ini ${pkgdir}/etc/neutron/
-  install -m 644 etc/neutron/rootwrap.d/lbaas-haproxy.filters ${pkgdir}/etc/neutron/rootwrap.d/
+  install -d "${pkgdir}/etc/neutron/rootwrap.d/"
+  install -m 640 etc/neutron/lbaas_agent.ini "${pkgdir}/etc/neutron/"
+  install -m 644 etc/neutron/rootwrap.d/lbaas-haproxy.filters "${pkgdir}/etc/neutron/rootwrap.d/"
 
-  install -D -m 755 usr/bin/neutron-lbaas-agent ${pkgdir}/usr/bin/neutron-lbaas-agent
+  install -D -m 755 usr/bin/neutron-lbaas-agent "${pkgdir}/usr/bin/neutron-lbaas-agent"
 
-  install -D -m 644 ${srcdir}/neutron-lbaas-agent.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-lbaas-agent.service
+  install -D -m 644 "${srcdir}/neutron-lbaas-agent.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-lbaas-agent.service"
 }
 
 package_neutron-metadata-agent() {
@@ -215,14 +215,14 @@ package_neutron-metadata-agent() {
 
   cd tmp
 
-  install -D -m 640 etc/neutron/metadata_agent.ini ${pkgdir}/etc/neutron/metadata_agent.ini
+  install -D -m 640 etc/neutron/metadata_agent.ini "${pkgdir}/etc/neutron/metadata_agent.ini"
 
-  install -d ${pkgdir}/usr/bin/
-  install -m 755 usr/bin/neutron-metadata-agent ${pkgdir}/usr/bin/
-  install -m 755 usr/bin/neutron-ns-metadata-proxy ${pkgdir}/usr/bin/
+  install -d "${pkgdir}/usr/bin/"
+  install -m 755 usr/bin/neutron-metadata-agent "${pkgdir}/usr/bin/"
+  install -m 755 usr/bin/neutron-ns-metadata-proxy "${pkgdir}/usr/bin/"
 
-  install -D -m 644 ${srcdir}/neutron-metadata-agent.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-metadata-agent.service
+  install -D -m 644 "${srcdir}/neutron-metadata-agent.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-metadata-agent.service"
 }
 
 package_neutron-plugin-bigswitch() {
@@ -234,7 +234,7 @@ package_neutron-plugin-bigswitch() {
   cd tmp
 
   install -D -m 640 etc/neutron/plugins/bigswitch/restproxy.ini \
-                    ${pkgdir}/etc/neutron/plugins/bigswitch/restproxy.ini
+                    "${pkgdir}/etc/neutron/plugins/bigswitch/restproxy.ini"
 }
 
 package_neutron-plugin-brocade() {
@@ -246,7 +246,7 @@ package_neutron-plugin-brocade() {
   cd tmp
 
   install -D -m 640 etc/neutron/plugins/brocade/brocade.ini \
-                    ${pkgdir}/etc/neutron/plugins/brocade/brocade.ini
+                    "${pkgdir}/etc/neutron/plugins/brocade/brocade.ini"
 }
 
 package_neutron-plugin-cisco() {
@@ -257,8 +257,8 @@ package_neutron-plugin-cisco() {
 
   cd tmp
 
-  install -d ${pkgdir}/etc/neutron/plugins/cisco/
-  install -m 640 etc/neutron/plugins/cisco/cisco_plugins.ini ${pkgdir}/etc/neutron/plugins/cisco/
+  install -d "${pkgdir}/etc/neutron/plugins/cisco/"
+  install -m 640 etc/neutron/plugins/cisco/cisco_plugins.ini "${pkgdir}/etc/neutron/plugins/cisco/"
 }
 
 package_neutron-plugin-hyperv() {
@@ -270,7 +270,7 @@ package_neutron-plugin-hyperv() {
   cd tmp
 
   install -D -m 640 etc/neutron/plugins/hyperv/hyperv_neutron_plugin.ini \
-                    ${pkgdir}/etc/neutron/plugins/hyperv/hyperv_neutron_plugin.ini
+                    "${pkgdir}/etc/neutron/plugins/hyperv/hyperv_neutron_plugin.ini"
 }
 
 package_neutron-plugin-linuxbridge() {
@@ -282,7 +282,7 @@ package_neutron-plugin-linuxbridge() {
   cd tmp
 
   install -D -m 640 etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini \
-                    ${pkgdir}/etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
+                    "${pkgdir}/etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini"
 }
 
 package_neutron-plugin-linuxbridge-agent() {
@@ -293,10 +293,10 @@ package_neutron-plugin-linuxbridge-agent() {
   cd tmp
 
   install -D -m 644 etc/neutron/rootwrap.d/linuxbridge-plugin.filters \
-                    ${pkgdir}/etc/neutron/rootwrap.d/linuxbridge-plugin.filters
-  install -D -m 755 usr/bin/neutron-linuxbridge-agent ${pkgdir}/usr/bin/neutron-linuxbridge-agent
-  install -D -m 644 ${srcdir}/neutron-plugin-linuxbridge-agent.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-plugin-linuxbridge-agent.service
+                    "${pkgdir}/etc/neutron/rootwrap.d/linuxbridge-plugin.filters"
+  install -D -m 755 usr/bin/neutron-linuxbridge-agent "${pkgdir}/usr/bin/neutron-linuxbridge-agent"
+  install -D -m 644 "${srcdir}/neutron-plugin-linuxbridge-agent.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-plugin-linuxbridge-agent.service"
 }
 
 package_neutron-plugin-metaplugin() {
@@ -308,7 +308,7 @@ package_neutron-plugin-metaplugin() {
   cd tmp
 
   install -D -m 640 etc/neutron/plugins/metaplugin/metaplugin.ini \
-                    ${pkgdir}/etc/neutron/plugins/metaplugin/metaplugin.ini
+                    "${pkgdir}/etc/neutron/plugins/metaplugin/metaplugin.ini"
 }
 
 package_neutron-plugin-metering-agent() {
@@ -318,10 +318,10 @@ package_neutron-plugin-metering-agent() {
 
   cd tmp
 
-  install -D -m 640 etc/neutron/metering_agent.ini ${pkgdir}/etc/neutron/metering_agent.ini
-  install -D -m 755 usr/bin/neutron-metering-agent ${pkgdir}/usr/bin/neutron-metering-agent
-  install -D -m 644 ${srcdir}/neutron-plugin-metering-agent.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-plugin-metering-agent.service
+  install -D -m 640 etc/neutron/metering_agent.ini "${pkgdir}/etc/neutron/metering_agent.ini"
+  install -D -m 755 usr/bin/neutron-metering-agent "${pkgdir}/usr/bin/neutron-metering-agent"
+  install -D -m 644 "${srcdir}/neutron-plugin-metering-agent.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-plugin-metering-agent.service"
 }
 
 package_neutron-plugin-midonet() {
@@ -333,7 +333,7 @@ package_neutron-plugin-midonet() {
   cd tmp
 
   install -D -m 640 etc/neutron/plugins/midonet/midonet.ini \
-                    ${pkgdir}/etc/neutron/plugins/midonet/midonet.ini
+                    "${pkgdir}/etc/neutron/plugins/midonet/midonet.ini"
 }
 
 package_neutron-plugin-mlnx-agent() {
@@ -344,10 +344,10 @@ package_neutron-plugin-mlnx-agent() {
   cd tmp
 
   install -D -m 640 etc/neutron/plugins/mlnx/mlnx_conf.ini \
-                    ${pkgdir}/etc/neutron/plugins/mlnx/mlnx_conf.ini
-  install -D -m 755 usr/bin/neutron-mlnx-agent ${pkgdir}/usr/bin/neutron-mlnx-agent
-  install -D -m 644 ${srcdir}/neutron-plugin-mlnx-agent.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-plugin-mlnx-agent.service
+                    "${pkgdir}/etc/neutron/plugins/mlnx/mlnx_conf.ini"
+  install -D -m 755 usr/bin/neutron-mlnx-agent "${pkgdir}/usr/bin/neutron-mlnx-agent"
+  install -D -m 644 "${srcdir}/neutron-plugin-mlnx-agent.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-plugin-mlnx-agent.service"
 }
 
 package_neutron-plugin-nec() {
@@ -358,7 +358,7 @@ package_neutron-plugin-nec() {
 
   cd tmp
 
-  install -D -m 640 etc/neutron/plugins/nec/nec.ini ${pkgdir}/etc/neutron/plugins/nec/nec.ini
+  install -D -m 640 etc/neutron/plugins/nec/nec.ini "${pkgdir}/etc/neutron/plugins/nec/nec.ini"
 }
 
 package_neutron-plugin-nec-agent() {
@@ -369,10 +369,10 @@ package_neutron-plugin-nec-agent() {
   cd tmp
 
   install -D -m 644 etc/neutron/rootwrap.d/nec-plugin.filters \
-                    ${pkgdir}/etc/neutron/rootwrap.d/nec-plugin.filters
-  install -D -m 755 usr/bin/neutron-nec-agent ${pkgdir}/usr/bin/neutron-nec-agent
-  install -D -m 644 ${srcdir}/neutron-plugin-nec-agent.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-plugin-nec-agent.service
+                    "${pkgdir}/etc/neutron/rootwrap.d/nec-plugin.filters"
+  install -D -m 755 usr/bin/neutron-nec-agent "${pkgdir}/usr/bin/neutron-nec-agent"
+  install -D -m 644 "${srcdir}/neutron-plugin-nec-agent.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-plugin-nec-agent.service"
 }
 
 package_neutron-plugin-nicira() {
@@ -383,8 +383,8 @@ package_neutron-plugin-nicira() {
 
   cd tmp
 
-  install -D -m 640 etc/neutron/plugins/nicira/nvp.ini ${pkgdir}/etc/neutron/plugins/nicira/nvp.ini
-  install -D -m 755 usr/bin/neutron-check-nvp-config ${pkgdir}/usr/bin/neutron-check-nvp-config
+  install -D -m 640 etc/neutron/plugins/nicira/nvp.ini "${pkgdir}/etc/neutron/plugins/nicira/nvp.ini"
+  install -D -m 755 usr/bin/neutron-check-nvp-config "${pkgdir}/usr/bin/neutron-check-nvp-config"
 }
 
 package_neutron-plugin-openvswitch() {
@@ -396,7 +396,7 @@ package_neutron-plugin-openvswitch() {
   cd tmp
 
   install -D -m 640 etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini \
-                    ${pkgdir}/etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini
+                    "${pkgdir}/etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini"
 }
 
 package_neutron-plugin-openvswitch-agent() {
@@ -408,10 +408,10 @@ package_neutron-plugin-openvswitch-agent() {
   cd tmp
 
   install -D -m 644 etc/neutron/rootwrap.d/openvswitch-plugin.filters \
-                    ${pkgdir}/etc/neutron/rootwrap.d/openvswitch-plugin.filters
-  install -D -m 755 usr/bin/neutron-openvswitch-agent ${pkgdir}/usr/bin/neutron-openvswitch-agent
-  install -D -m 644 ${srcdir}/neutron-plugin-openvswitch-agent.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-plugin-openvswitch-agent.service
+                    "${pkgdir}/etc/neutron/rootwrap.d/openvswitch-plugin.filters"
+  install -D -m 755 usr/bin/neutron-openvswitch-agent "${pkgdir}/usr/bin/neutron-openvswitch-agent"
+  install -D -m 644 "${srcdir}/neutron-plugin-openvswitch-agent.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-plugin-openvswitch-agent.service"
 }
 
 package_neutron-plugin-plumgrid() {
@@ -423,7 +423,7 @@ package_neutron-plugin-plumgrid() {
   cd tmp
 
   install -D -m 640 etc/neutron/plugins/plumgrid/plumgrid.ini \
-                    ${pkgdir}/etc/neutron/plugins/plumgrid/plumgrid.ini
+                    "${pkgdir}/etc/neutron/plugins/plumgrid/plumgrid.ini"
 }
 
 package_neutron-plugin-ryu() {
@@ -434,7 +434,7 @@ package_neutron-plugin-ryu() {
 
   cd tmp
 
-  install -D -m 640 etc/neutron/plugins/ryu/ryu.ini ${pkgdir}/etc/neutron/plugins/ryu/ryu.ini
+  install -D -m 640 etc/neutron/plugins/ryu/ryu.ini "${pkgdir}/etc/neutron/plugins/ryu/ryu.ini"
 }
 
 package_neutron-plugin-ryu-agent() {
@@ -445,10 +445,10 @@ package_neutron-plugin-ryu-agent() {
   cd tmp
 
   install -D -m 644 etc/neutron/rootwrap.d/ryu-plugin.filters \
-                    ${pkgdir}/etc/neutron/rootwrap.d/ryu-plugin.filters
-  install -D -m 755 usr/bin/neutron-ryu-agent ${pkgdir}/usr/bin/neutron-ryu-agent
-  install -D -m 644 ${srcdir}/neutron-plugin-ryu-agent.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-plugin-ryu-agent.service
+                    "${pkgdir}/etc/neutron/rootwrap.d/ryu-plugin.filters"
+  install -D -m 755 usr/bin/neutron-ryu-agent "${pkgdir}/usr/bin/neutron-ryu-agent"
+  install -D -m 644 "${srcdir}/neutron-plugin-ryu-agent.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-plugin-ryu-agent.service"
 }
 
 package_neutron-plugin-vpn-agent() {
@@ -458,10 +458,10 @@ package_neutron-plugin-vpn-agent() {
   cd tmp
 
   install -D -m 640 etc/neutron/vpn_agent.ini \
-                    ${pkgdir}/etc/neutron/vpn_agent.ini
-  install -D -m 755 usr/bin/neutron-vpn-agent ${pkgdir}/usr/bin/neutron-vpn-agent
-  install -D -m 644 ${srcdir}/neutron-plugin-vpn-agent.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-plugin-vpn-agent.service
+                    "${pkgdir}/etc/neutron/vpn_agent.ini"
+  install -D -m 755 usr/bin/neutron-vpn-agent "${pkgdir}/usr/bin/neutron-vpn-agent"
+  install -D -m 644 "${srcdir}/neutron-plugin-vpn-agent.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-plugin-vpn-agent.service"
 }
 
 package_neutron-server() {
@@ -472,10 +472,10 @@ package_neutron-server() {
 
   cd tmp
 
-  install -D -m 644 ${srcdir}/neutron-server-default ${pkgdir}/etc/default/neutron-server
-  install -D -m 755 usr/bin/neutron-server ${pkgdir}/usr/bin/neutron-server
-  install -D -m 644 ${srcdir}/neutron-server.service \
-                    ${pkgdir}/usr/lib/systemd/system/neutron-server.service
+  install -D -m 644 "${srcdir}/neutron-server-default" "${pkgdir}/etc/default/neutron-server"
+  install -D -m 755 usr/bin/neutron-server "${pkgdir}/usr/bin/neutron-server"
+  install -D -m 644 "${srcdir}/neutron-server.service" \
+                    "${pkgdir}/usr/lib/systemd/system/neutron-server.service"
 }
 
 # vim:set ts=2 sw=2 et:
